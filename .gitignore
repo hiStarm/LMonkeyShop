@@ -1,0 +1,3 @@
+# Project exclude paths
+/LMonkeyShop/web/WEB-INF/classes/
+/out/
