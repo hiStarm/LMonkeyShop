@@ -16,18 +16,18 @@
         </div>
         <div class="search-wrap">
             <div class="search-content">
-                <form action="#" method="post">
+                <form action="admin_douserselect" method="get">
                     <table class="search-tab">
                         <tr>
-                            <th width="120">选择分类:</th>
+                            <!--th width="120">选择分类:</th>
                             <td>
                                 <select name="search-sort" id=" ">
                                     <option value="">全部</option>
                                     <option value="19">精品界面</option><option value="20">推荐界面</option>
                                 </select>
-                            </td>
+                            </td-->
                             <th width="70">关键字:</th>
-                            <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" value="${param.keywords}" id="" type="text"></td>
                             <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
                         </tr>
                     </table>
@@ -73,10 +73,10 @@
                     </table>
                     <div class="list-page">
                         共${tsum}条记录，当前${cpage}/${tpage}页
-                        <a href="admin_douserselect?cp=1">首页</a>
-                        <a href="admin_douserselect?cp=${cpage-1>0?cpage-1:1}">上一页</a>
-                        <a href="admin_douserselect?cp=${cpage+1>tpage?tpage:cpage+1}">下一页</a>
-                        <a href="admin_douserselect?cp=${tpage}">尾页</a>
+                        <a href="admin_douserselect?cp=1${searchPram}">首页</a>
+                        <a href="admin_douserselect?cp=${cpage-1>0?cpage-1:1}${searchPram}">上一页</a>
+                        <a href="admin_douserselect?cp=${cpage+1>tpage?tpage:cpage+1}${searchPram}">下一页</a>
+                        <a href="admin_douserselect?cp=${tpage}${searchPram}">尾页</a>
                     </div>
                 </div>
             </form>

@@ -25,18 +25,23 @@ public class DoUserSelect extends HttpServlet {
         int cpage = 1;   //当前页
         int count = 5;   //每页显示条数
         String  cp=request.getParameter("cp");
+        //接收用户搜索的关键字
+        String keyword = request.getParameter("keywords");
         if (cp!=null){
             cpage=Integer.parseInt(cp);
         }
-        int[] arr= LMONKEY_USERDao.totalPage(count);
+        int[] arr= LMONKEY_USERDao.totalPage(count,keyword);
         //获取用户记录
         ArrayList<LMONKEY_USER> list= null;
-        list = LMONKEY_USERDao.selsetAll(cpage,count);
+        list = LMONKEY_USERDao.selsetAll(cpage,count,keyword);
         //放到请求对象域中
         request.setAttribute("userlist",list);
         request.setAttribute("tsum",arr[0]);
         request.setAttribute("tpage",arr[1]);
         request.setAttribute("cpage",cpage);
+        if (keyword!=null){
+            request.setAttribute("searchPram","&keywords="+keyword);
+        }
         request.getRequestDispatcher("admin_user.jsp").forward(request,response);
     }
 }

@@ -40,15 +40,22 @@ public class LMONKEY_USERDao {
      * @param count 每页条数
      * @return
      */
-    public static int[] totalPage(int count) {
+    public static int[] totalPage(int count ,String keyword) {
         //arr[0]总记录数，arr[1]条数
         int[] arr = {0, 1};
         Connection conn = Basedao.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "select count(*) from user_info";
-            ps = conn.prepareStatement(sql);
+            String sql="";
+            if (keyword!=null){
+                sql = "select count(*) from user_info where USER_NAME like ?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,"%"+keyword+"%");
+            }else {
+                sql = "select count(*) from user_info";
+                ps = conn.prepareStatement(sql);
+            }
             rs = ps.executeQuery();
             while (rs.next()) {
                 arr[0] = rs.getInt(1);
@@ -65,7 +72,7 @@ public class LMONKEY_USERDao {
         }
         return arr;
     }
-    public static ArrayList<LMONKEY_USER> selsetAll(int cpage,int count){
+    public static ArrayList<LMONKEY_USER> selsetAll(int cpage,int count,String keyword){
         ArrayList<LMONKEY_USER> list = new ArrayList<LMONKEY_USER>();
         //声明结果集
         ResultSet rs=null;
@@ -73,10 +80,20 @@ public class LMONKEY_USERDao {
         Connection conn=Basedao.getConnection();
         PreparedStatement ps=null;
         try {
-            String sql="select * from user_info order by USER_BIRTHDAY desc limit ?,?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,(cpage-1)*count);
-            ps.setInt(2,count);
+            String sql="";
+            if (keyword!=null){
+                sql="select * from user_info where USER_NAME like ? order by USER_BIRTHDAY desc limit ?,?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,"%"+keyword+"%");
+                ps.setInt(2,(cpage-1)*count);
+                ps.setInt(3,count);
+            }else {
+                sql="select * from user_info order by USER_BIRTHDAY desc limit ?,?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,(cpage-1)*count);
+                ps.setInt(2,count);
+            }
+
             rs=ps.executeQuery();
             while (rs.next()) {
                 LMONKEY_USER user = new LMONKEY_USER(
