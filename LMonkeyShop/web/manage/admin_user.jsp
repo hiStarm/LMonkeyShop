@@ -74,8 +74,8 @@
                     <div class="list-page">
                         共${tsum}条记录，当前${cpage}/${tpage}页
                         <a href="admin_douserselect?cp=1">首页</a>
-                        <a href="admin_douserselect?cp=${(cpage-1)>0?(cpage-1):1}">上一页</a>
-                        <a href="admin_douserselect?cp=${(cpage+1)>tpage?tpage:(capge+1)}">下一页</a>
+                        <a href="admin_douserselect?cp=${cpage-1>0?cpage-1:1}">上一页</a>
+                        <a href="admin_douserselect?cp=${cpage+1>tpage?tpage:cpage+1}">下一页</a>
                         <a href="admin_douserselect?cp=${tpage}">尾页</a>
                     </div>
                 </div>
