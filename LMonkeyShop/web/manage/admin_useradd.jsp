@@ -71,7 +71,6 @@
                                 <input class="common-text required" id=" " name="address" size="50" value="" type="text">
                             </td>
                         </tr>
-
                         <tr>
                             <th></th>
                             <td>

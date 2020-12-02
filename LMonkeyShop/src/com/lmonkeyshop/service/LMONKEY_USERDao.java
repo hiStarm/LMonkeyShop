@@ -36,6 +36,40 @@ public class LMONKEY_USERDao {
     }
 
     /**
+     *
+     * 删除用户
+     * @param id
+     * @return
+     */
+    public static int delByID(String id){
+        String sql = "delete from user_info where USER_ID=? and USER_STATUS!=2";
+        Object[] prarms={id};
+        return Basedao.executeIUD(sql,prarms);
+    }
+
+    /**
+     * 修改用户数据
+     * @param lmonkey_user
+     * @return
+     */
+    public static int update(LMONKEY_USER lmonkey_user){
+        String sql = "update user_info set USER_NAME=?,USER_PASSWORD=?,USER_SEX=?,USER_BIRTHDAY=DATE_FORMAT(?,'%Y-%m-%d')," +
+                "USER_IDENITY_CODE=?,USER_EMAIL=?,USER_MOBILE=?,USER_ADDRESS=?,USER_STATUS=? where USER_ID=?";
+        Object[] prarms={
+                lmonkey_user.getUSER_NAME(),
+                lmonkey_user.getUSER_PASSWORD(),
+                lmonkey_user.getUSER_SEX(),
+                lmonkey_user.getUSER_BIRTHDAY(),
+                lmonkey_user.getUSER_IDENITY_CODE(),
+                lmonkey_user.getUSER_EMAIL(),
+                lmonkey_user.getUSER_MOBILE(),
+                lmonkey_user.getUSER_ADDRESS(),
+                lmonkey_user.getUSER_STATUS(),
+                lmonkey_user.getUSER_ID()};
+        return Basedao.executeIUD(sql,prarms);
+    }
+
+    /**
      * 获取总记录和总条数
      * @param count 每页条数
      * @return
@@ -72,6 +106,55 @@ public class LMONKEY_USERDao {
         }
         return arr;
     }
+
+    /**
+     * 查找
+     * @param id
+     * @return
+     */
+    public static LMONKEY_USER selectByID(String id){
+        LMONKEY_USER user=null;
+        //声明结果集
+        ResultSet rs=null;
+        //获取连接对象
+        Connection conn=Basedao.getConnection();
+        PreparedStatement ps=null;
+        try {
+            String sql="select m.*, DATE_FORMAT(m.user_birthday,'%Y-%m-%d')birthday from user_info m where USER_ID= ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,id);
+
+            rs=ps.executeQuery();
+            while (rs.next()) {
+                user = new LMONKEY_USER(
+                        rs.getString("USER_ID"),
+                        rs.getString("USER_NAME"),
+                        rs.getString("USER_PASSWORD"),
+                        rs.getString("USER_SEX"),
+                        rs.getString("birthday"),
+                        rs.getString("USER_IDENITY_CODE"),
+                        rs.getString("USER_EMAIL"),
+                        rs.getString("USER_MOBILE"),
+                        rs.getString("USER_ADDRESS"),
+                        rs.getInt("USER_STATUS")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            Basedao.close(conn,ps,rs);
+        }
+        return user;
+    }
+
+    /**
+     * 查询
+     * @param cpage
+     * @param count
+     * @param keyword
+     * @return
+     */
     public static ArrayList<LMONKEY_USER> selsetAll(int cpage,int count,String keyword){
         ArrayList<LMONKEY_USER> list = new ArrayList<LMONKEY_USER>();
         //声明结果集

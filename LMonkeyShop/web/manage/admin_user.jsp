@@ -63,12 +63,20 @@
                                 <td>${u.USER_EMAIL}</td>
                                 <td>${u.USER_MOBILE}</td>
                                 <td>
-                                    <a class="link-update" href="#">修改</a>
-                                    <a class="link-del" href="#">删除</a>
+                                    <a class="link-update" href="admin_touserupdate?id=${u.USER_ID}&cpage=${cpage}">修改</a>
+                                    <c:if test="${u.USER_STATUS==1}">
+                                        <a class="link-del" href="javascript:Delete('你确定要删除【${u.USER_NAME}】用户吗','admin_douserdel?id=${u.USER_ID}&cpage=${cpage}')">删除</a>
+                                    </c:if>
                                 </td>
                             </tr>
                         </c:forEach>
-
+                        <script>
+                            function Delete(mess,url) {
+                                if (confirm(mess)){
+                                    location.href=url;
+                                }
+                            }
+                        </script>
 
                     </table>
                     <div class="list-page">

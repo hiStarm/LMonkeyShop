@@ -13,12 +13,11 @@ import java.io.PrintWriter;
 
 /**
  * @author mzw
- * @date 2020/12/1 - 17:15
+ * @date 2020/12/2 - 17:26
  */
-@WebServlet(name = "admin_douseradd",urlPatterns = {"/manage/admin_douseradd"})
-public class DoUserAdd extends HttpServlet {
+@WebServlet(name = "admin_douserupdate",urlPatterns = {"/manage/admin_douserupdate"})
+public class DoUserUpdate extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //设置字符集
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
 
@@ -30,20 +29,26 @@ public class DoUserAdd extends HttpServlet {
         String email=request.getParameter("email");
         String mobile=request.getParameter("mobile");
         String address=request.getParameter("address");
+        String userstatus=request.getParameter("userStatus");
+
+        int status = 1;
+        if (userstatus!=null){
+            status=Integer.parseInt(userstatus);
+        }
         //创建用户实体
         LMONKEY_USER user=new LMONKEY_USER(username,name,pwd,sex,birthday,null,
-                email,mobile,address,1);
+                email,mobile,address,status);
 
         //加入到数据库的用户表中
-        int count= LMONKEY_USERDao.insert(user);
+        int count= LMONKEY_USERDao.update(user);
         //成功或失败定向到哪里
         if (count>0){
-            response.sendRedirect("admin_user.jsp");
+            response.sendRedirect("admin_douserselect?cp="+request.getParameter("cpage"));
         }else{
             PrintWriter out=response.getWriter();
             out.write("<script>");
-            out.write("alert('用户添加失败')");
-            out.write("location.href='manage/admin_useradd.jsp'");
+            out.write("alert('用户修改失败')");
+            out.write("location.href='manage/admin_touserupdate?id='"+username+"'");
             out.write("</script>");
         }
     }
