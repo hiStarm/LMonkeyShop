@@ -46,7 +46,7 @@
                         <th>性别：</th>
                         <td>
                             <input type="radio" name="sex" value="T" ${USER_SEX=="T"?"checked":""}>男
-                            <input type="radio" name="sex" value="F" ${USER_SEX=="F"?"checked":""}>女
+                            <input type="radio" name="sex" value="F" ${USER_SEX=="F"?"":"checked"}>女
                         </td>
                     </tr>
                     <tr>
