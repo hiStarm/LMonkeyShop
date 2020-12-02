@@ -9,7 +9,6 @@
 <%@ include file="admin_menu.jsp"%>
 <!--/sidebar-->
 <div class="main-wrap">
-
     <div class="crumb-wrap">
         <div class="crumb-list"><i class="icon-font"></i><a href="admin_index.jsp">首页</a>
             <span class="crumb-step">&gt;</span>
@@ -82,7 +81,6 @@
             </form>
         </div>
     </div>
-
 </div>
 <!--/main-->
 </div>
