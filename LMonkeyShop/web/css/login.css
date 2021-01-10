@@ -23,12 +23,12 @@ html, body {
 
 .login form, .reg form {
     position: fixed;
-    top: 15%;
-    right: 140px;
+    top: 8%;
+    right: 120px;
     padding: 20px 0;
-    text-align: center;
     z-index: 10;
     background: #fff;
+    padding-left: 40px;
 }
 
 .msg-warn {
@@ -43,21 +43,20 @@ html, body {
 }
 
 .login form {
-    top: 18%;
+    top: 15%;
     border: 1px solid #dbdbdb;
     width: 440px;
     height: 310px;
 }
 
 .reg form {
-    width: 480px;
-    height: 490px;
+    width: 550px;
     background: #fff;
 }
 
 .reg form h1, .login form h1 {
     border-bottom: 1px solid #dbdbdb;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .reg form p, .login form p {
@@ -72,7 +71,7 @@ html, body {
 
 .reg form input, .login form input {
     width: 270px;
-    height: 40px;
+    height: 25px;
     border-radius: 3px;
 }
 
@@ -114,7 +113,7 @@ div.reg form p.txtL a {
     text-align: right;
 }
 
-.reg p.txt a, .login p.txt a, {
+.reg p.txt a, .login p.txt a{
     color: #666;
     text-decoration: underline;
 }

@@ -16,9 +16,18 @@ import java.io.PrintWriter;
  * @date 2020/12/2 - 18:07
  */
 @WebServlet(name = "admin_douserdel",urlPatterns = {"/manage/admin_douserdel"})
-public class DoUserDle extends HttpServlet {
+public class DoUserDel extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request,response);
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=utf-8");
+
+        String ids[]=request.getParameterValues("id[]");
+        for (int i=0;i<ids.length;i++){
+            LMONKEY_USERDao.delByID(ids[i]);
+        }
+
+        response.sendRedirect("admin_douserselect");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

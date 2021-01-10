@@ -35,18 +35,18 @@
             </div>
         </div>
         <div class="result-wrap">
-            <form name="myform" id="myform" method="post">
+            <form id="myform" action="admin_douserdel" method="post">
                 <div class="result-title">
                     <div class="result-list">
                         <a href="admin_useradd.jsp"><i class="icon-font"></i>新增用户</a>
-                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+                        <a id="batchDel" href="javascript:delmore('你确定删除这些用户名？','myform')"><i class="icon-font"></i>批量删除</a>
+                        <!--<a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>-->
                     </div>
                 </div>
                 <div class="result-content">
                     <table class="result-tab" width="100%">
                         <tr>
-                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+                            <th class="tc" width="5%"><input class="allChoose" name="" onclick="selectall(this)" type="checkbox"></th>
                             <th>ID</th>
                             <th>姓名</th>
                             <th>性别</th>
@@ -74,6 +74,18 @@
                             function Delete(mess,url) {
                                 if (confirm(mess)){
                                     location.href=url;
+                                }
+                            }
+                            function selectall(o) {
+                                var a = document.getElementsByName("id[]");
+                                for (var i=0;i<a.length;i++){
+                                    a[i].checked=o.checked;
+                                }
+                            }
+                            function delmore(mess,formname) {
+                                if (confirm(mess)){
+                                    var form = document.getElementById(formname);
+                                    form.submit();
                                 }
                             }
                         </script>
