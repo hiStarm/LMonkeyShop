@@ -107,6 +107,83 @@ public class LMONKEY_USERDao {
         return arr;
     }
 
+    public static int selectByName(String id) {
+        int count =0;
+        Connection conn = Basedao.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "select count(*) from user_info where USER_ID=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                count=rs.getInt(1);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Basedao.close(conn, ps, rs);
+        }
+        return count;
+    }
+    public static int selectByNP(String username,String pwd) {
+        int count =0;
+        Connection conn = Basedao.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "select count(*) from user_info where USER_ID=? and USER_PASSWORD=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,pwd);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                count=rs.getInt(1);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Basedao.close(conn, ps, rs);
+        }
+        return count;
+    }
+    public static LMONKEY_USER selectAdmin(String name,String pwd) {
+        LMONKEY_USER user=null;
+        //声明结果集
+        ResultSet rs=null;
+        //获取连接对象
+        Connection conn=Basedao.getConnection();
+        PreparedStatement ps=null;
+        try {
+            String sql="select m.*, DATE_FORMAT(m.user_birthday,'%Y-%m-%d')birthday from user_info m where USER_ID= ? and USER_PASSWORD=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,name);
+            ps.setString(1,pwd);
+
+            rs=ps.executeQuery();
+            while (rs.next()) {
+                user = new LMONKEY_USER(
+                        rs.getString("USER_ID"),
+                        rs.getString("USER_NAME"),
+                        rs.getString("USER_PASSWORD"),
+                        rs.getString("USER_SEX"),
+                        rs.getString("birthday"),
+                        rs.getString("USER_IDENITY_CODE"),
+                        rs.getString("USER_EMAIL"),
+                        rs.getString("USER_MOBILE"),
+                        rs.getString("USER_ADDRESS"),
+                        rs.getInt("USER_STATUS")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            Basedao.close(conn,ps,rs);
+        }
+        return user;
+    }
     /**
      * 查找
      * @param id

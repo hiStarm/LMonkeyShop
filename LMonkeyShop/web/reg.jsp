@@ -28,7 +28,7 @@
 </head>
 <body><!-------------------reg-------------------------->
     <div class="reg">
-        <form action="#" method="post">
+        <form action="register" method="post" onsubmit="return CheckForm(this)">
             <!--<h1><a href="index.html"><img src="img/temp/logo.png"></a></h1>-->
             <h1>用户注册</h1>
             <p><input type="text" name="userName" value="" onfocus="FocusItem(this)" onblur="CheckItem(this)" placeholder="请输入用户名"><span></span></p>
