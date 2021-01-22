@@ -42,8 +42,8 @@ public class DoUserAdd extends HttpServlet {
         }else{
             PrintWriter out=response.getWriter();
             out.write("<script>");
-            out.write("alert('用户添加失败')");
-            out.write("location.href='manage/admin_useradd.jsp'");
+            out.write("alert('用户添加失败');");
+            out.write("location.href='manage/admin_useradd.jsp';");
             out.write("</script>");
         }
     }

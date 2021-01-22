@@ -42,8 +42,8 @@ public class DoUserDel extends HttpServlet {
         }else{
             PrintWriter out=response.getWriter();
             out.write("<script>");
-            out.write("alert('用户删除失败')");
-            out.write("location.href='manage/admin_touserupdate?cp="+request.getParameter("cpage")+"'");
+            out.write("alert('用户删除失败');");
+            out.write("location.href='manage/admin_touserupdate?cp="+request.getParameter("cpage")+"';");
             out.write("</script>");
         }
     }

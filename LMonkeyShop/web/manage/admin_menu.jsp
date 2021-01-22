@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>简单通用文章系统后台管理模板</title>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/manage/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/manage/css/main.css"/>
 </head>
 <body>
 <div class="topbar-wrap white">

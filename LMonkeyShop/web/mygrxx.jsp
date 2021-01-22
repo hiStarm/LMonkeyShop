@@ -28,7 +28,7 @@
             </div>
         </div>
         <ul class="clearfix" id="bott">
-            <li><a href="index.html">首页</a></li>
+            <li><a href="index.jsp">首页</a></li>
             <li><a href="#">所有商品</a>
                 <div class="sList">
                     <div class="wrapper  clearfix"><a href="paint.html">

@@ -28,6 +28,7 @@ public class AdminLogin implements Filter {
         String requestURI = request.getRequestURI();
         String contextPath = request.getContextPath();
         String substring = requestURI.substring(contextPath.length());
+
         if (substring.contains("admin_")){
             if (isLogin!=""&&isLogin=="1"){
                 chain.doFilter(request, response);

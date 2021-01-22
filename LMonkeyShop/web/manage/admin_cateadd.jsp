@@ -12,7 +12,7 @@
     <div class="main-wrap">
 
         <div class="crumb-wrap">
-            <div class="crumb-list"><i class="icon-font"></i><a href="/jscss/admin/design/">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="admin_CateSelect">分类管理</a><span class="crumb-step">&gt;</span><span>新增分类</span></div>
+            <div class="crumb-list"><i class="icon-font"></i><a href="admin_index.jsp">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="admin_CateSelect">分类管理</a><span class="crumb-step">&gt;</span><span>新增分类</span></div>
         </div>
         <div class="result-wrap">
             <div class="result-content">
