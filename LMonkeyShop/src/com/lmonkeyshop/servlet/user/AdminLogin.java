@@ -14,33 +14,41 @@ import java.io.PrintWriter;
 
 /**
  * @author mzw
- * @date 2021/1/19 - 19:29
+ * @date 2021/1/20 - 20:01
  */
-@WebServlet("/loginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/manage/adminLogin")
+public class AdminLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=utf-8");
 
         String userName = request.getParameter("userName");
         String passWord = request.getParameter("passWord");
         int count = LMONKEY_USERDao.selectByNP(userName, passWord);
         if (count>0){
-            HttpSession session = request.getSession();
             LMONKEY_USER user = LMONKEY_USERDao.selectAdmin(userName, passWord);
-
+            HttpSession session = request.getSession();
             session.setAttribute("name",user);
             session.setAttribute("isLogin","1");
-            response.sendRedirect("index.jsp");
+            if(user.getUSER_STATUS()==2){
+                session.setAttribute("isAdminLogin","1");
+                response.sendRedirect("admin_index.jsp");
+
+            }else {
+                response.sendRedirect("/shop/index.jsp");
+
+            }
+
         }else {
             PrintWriter writer = response.getWriter();
 
             writer.write("<script>");
             writer.write("alert('用户登陆失败');");
-            writer.write("location.href='login.jsp'");
+            writer.write("location.href='admin_login.jsp';");
             writer.write("</script>");
             writer.close();
         }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

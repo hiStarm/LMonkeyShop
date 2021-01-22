@@ -149,7 +149,7 @@ public class LMONKEY_USERDao {
         return count;
     }
     public static LMONKEY_USER selectAdmin(String name,String pwd) {
-        LMONKEY_USER user=null;
+        LMONKEY_USER lmonkey_user=null;
         //声明结果集
         ResultSet rs=null;
         //获取连接对象
@@ -159,11 +159,11 @@ public class LMONKEY_USERDao {
             String sql="select m.*, DATE_FORMAT(m.user_birthday,'%Y-%m-%d')birthday from user_info m where USER_ID= ? and USER_PASSWORD=?";
             ps = conn.prepareStatement(sql);
             ps.setString(1,name);
-            ps.setString(1,pwd);
+            ps.setString(2,pwd);
 
             rs=ps.executeQuery();
             while (rs.next()) {
-                user = new LMONKEY_USER(
+                lmonkey_user = new LMONKEY_USER(
                         rs.getString("USER_ID"),
                         rs.getString("USER_NAME"),
                         rs.getString("USER_PASSWORD"),
@@ -182,7 +182,7 @@ public class LMONKEY_USERDao {
         finally {
             Basedao.close(conn,ps,rs);
         }
-        return user;
+        return lmonkey_user;
     }
     /**
      * 查找
@@ -232,7 +232,7 @@ public class LMONKEY_USERDao {
      * @param keyword
      * @return
      */
-    public static ArrayList<LMONKEY_USER> selsetAll(int cpage,int count,String keyword){
+    public static ArrayList<LMONKEY_USER> selectAll(int cpage, int count, String keyword){
         ArrayList<LMONKEY_USER> list = new ArrayList<LMONKEY_USER>();
         //声明结果集
         ResultSet rs=null;

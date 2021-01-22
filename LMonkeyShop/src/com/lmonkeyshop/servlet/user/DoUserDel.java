@@ -1,6 +1,5 @@
 package com.lmonkeyshop.servlet.user;
 
-import com.lmonkeyshop.entity.LMONKEY_USER;
 import com.lmonkeyshop.service.LMONKEY_USERDao;
 
 import javax.servlet.ServletException;
@@ -25,7 +24,6 @@ public class DoUserDel extends HttpServlet {
         for (int i=0;i<ids.length;i++){
             LMONKEY_USERDao.delByID(ids[i]);
         }
-
         response.sendRedirect("admin_douserselect");
 
     }

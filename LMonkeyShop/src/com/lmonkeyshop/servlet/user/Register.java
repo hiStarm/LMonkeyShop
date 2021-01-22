@@ -35,15 +35,20 @@ public class Register extends HttpServlet {
         //加入到数据库的用户表中
         int count= LMONKEY_USERDao.insert(user);
         //成功或失败定向到哪里
+        PrintWriter out=response.getWriter();
         if (count>0){
-            response.sendRedirect("login.jsp");
-        }else{
-            PrintWriter out=response.getWriter();
+            //response.sendRedirect("login.jsp");
             out.write("<script>");
-            out.write("alert('用户注册失败')");
-            out.write("location.href='reg.jsp'");
+            out.write("alert('注册成功，请登录');");
+            out.write("location.href='login.jsp';");
+            out.write("</script>");
+        }else{
+            out.write("<script>");
+            out.write("alert('用户注册失败');");
+            out.write("location.href='reg.jsp';");
             out.write("</script>");
         }
+        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,10 +16,10 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
 <body><!------------------------------head------------------------------>
-<div class="head">
+<!--<div class="head">
     <div class="wrapper clearfix">
         <div class="clearfix" id="top"><h1 class="fl"><a href="index.jsp"><img src="img/logo.png"/></a></h1>
-            <div class="fr clearfix" id="top1"><p class="fl"><a href="login.jsp" id="login">登录</a><a href="reg.jsp" id="reg">注册</a>
+            <div class="fr clearfix" id="top1"><p class="fl"><a href="admin_login.jsp" id="login">登录</a><a href="reg.jsp" id="reg">注册</a>
             </p>
                 <form action="#" method="get" class="fl"><input type="text" placeholder="热门搜索：干花花瓶"/><input
                         type="button"/></form>
@@ -74,7 +75,10 @@
             <li><a href="idea.html">创意家居</a></li>
         </ul>
     </div>
-</div><!-------------------------banner--------------------------->
+</div>-->
+<%@include file="header.jsp"%>
+
+<!-------------------------banner--------------------------->
 <div class="block_home_slider">
     <div id="home_slider" class="flexslider">
         <ul class="slides">

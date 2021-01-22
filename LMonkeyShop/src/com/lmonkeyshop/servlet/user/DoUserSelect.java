@@ -33,7 +33,7 @@ public class DoUserSelect extends HttpServlet {
         int[] arr= LMONKEY_USERDao.totalPage(count,keyword);
         //获取用户记录
         ArrayList<LMONKEY_USER> list= null;
-        list = LMONKEY_USERDao.selsetAll(cpage,count,keyword);
+        list = LMONKEY_USERDao.selectAll(cpage,count,keyword);
         //放到请求对象域中
         request.setAttribute("userlist",list);
         request.setAttribute("tsum",arr[0]);
