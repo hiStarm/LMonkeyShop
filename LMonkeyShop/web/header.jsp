@@ -39,50 +39,16 @@
                 </div>
         </div>
         <ul class="clearfix" id="bott">
-            <li><a href="index.jsp">首页</a></li>
-            <li><a href="#">所有商品</a>
-                <div class="sList">
-                    <div class="wrapper  clearfix"><a href="paint.html">
-                        <dl>
-                            <dt><img src="img/nav1.jpg"/></dt>
-                            <dd>浓情欧式</dd>
-                        </dl>
-                    </a><a href="paint.html">
-                        <dl>
-                            <dt><img src="img/nav2.jpg"/></dt>
-                            <dd>浪漫美式</dd>
-                        </dl>
-                    </a><a href="paint.html">
-                        <dl>
-                            <dt><img src="img/nav3.jpg"/></dt>
-                            <dd>雅致中式</dd>
-                        </dl>
-                    </a><a href="paint.html">
-                        <dl>
-                            <dt><img src="img/nav6.jpg"/></dt>
-                            <dd>简约现代</dd>
-                        </dl>
-                    </a><a href="paint.html">
-                        <dl>
-                            <dt><img src="img/nav7.jpg"/></dt>
-                            <dd>创意装饰</dd>
-                        </dl>
-                    </a></div>
-                </div>
-            </li>
+            <li><a href="indexselect">首页</a></li>
+
             <li><a href="flowerDer.html">装饰摆件</a>
                 <div class="sList2">
-                    <div class="clearfix"><a href="proList.html">干花花艺</a><a href="vase_proList.html">花瓶花器</a></div>
+                    <div class="clearfix">
+                        <a href="proList.html">干花花艺</a>
+                        <a href="vase_proList.html">花瓶花器</a></div>
                 </div>
             </li>
-            <li><a href="decoration.html">布艺软饰</a>
-                <div class="sList2">
-                    <div class="clearfix"><a href="zbproList.html">桌布罩件</a><a href="bzproList.html">抱枕靠垫</a></div>
-                </div>
-            </li>
-            <li><a href="paint.html">墙式壁挂</a></li>
-            <li><a href="perfume.html">蜡艺香薰</a></li>
-            <li><a href="idea.html">创意家居</a></li>
+
         </ul>
     </div>
 </div>

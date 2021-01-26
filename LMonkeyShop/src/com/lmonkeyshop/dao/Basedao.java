@@ -42,7 +42,6 @@ public class Basedao {
         try {
             conn = getConnection();
             ps = conn.prepareStatement(sql);
-
             for (int i=0;i<params.length;i++){
                 ps.setObject(i+1,params[i]);
             }

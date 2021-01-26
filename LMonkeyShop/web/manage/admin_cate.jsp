@@ -43,7 +43,6 @@
                                 </tr>
                             </c:if>
                             <c:forEach var="zcate" items="${catelist}">
-                                <c:if test="${zcate.CATE_PARENT_ID==1}">
                                     <c:if test="${zcate.CATE_PARENT_ID==cate.CATE_ID}">
                                         <tr>
                                             <td>${zcate.CATE_ID}</td>
@@ -56,41 +55,7 @@
                                             </td>
                                         </tr>
                                     </c:if>
-                                </c:if>
                             </c:forEach>
-                            <c:forEach var="xcate" items="${catelist}">
-                                <c:if test="${xcate.CATE_PARENT_ID==2}">
-                                    <c:if test="${xcate.CATE_PARENT_ID==cate.CATE_ID}">
-                                        <tr>
-                                            <td>${xcate.CATE_ID}</td>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${xcate.CATE_NAME}</td>
-                                            <td>
-                                                <a class="link-update" href="admin_tocateupdate?id=${xcate.CATE_ID}">修改</a>
-
-                                                <a class="link-del" href="javascript:Delete('你确定要删除【${xcate.CATE_NAME}】用户吗','admin_docatedel?id=${xcate.CATE_ID}')">删除</a>
-
-                                            </td>
-                                        </tr>
-                                    </c:if>
-                                </c:if>
-                            </c:forEach>
-                            <c:forEach var="ccate" items="${catelist}">
-                            <c:if test="${ccate.CATE_PARENT_ID==3}">
-                                <c:if test="${ccate.CATE_PARENT_ID==cate.CATE_ID}">
-                                    <tr>
-                                        <td>${ccate.CATE_ID}</td>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ccate.CATE_NAME}</td>
-                                        <td>
-                                            <a class="link-update" href="admin_tocateupdate?id=${ccate.CATE_ID}">修改</a>
-
-                                            <a class="link-del" href="javascript:Delete('你确定要删除【${ccate.CATE_NAME}】用户吗','admin_docatedel?id=${ccate.CATE_ID}')">删除</a>
-
-                                        </td>
-                                    </tr>
-                                </c:if>
-                            </c:if>
-
-                        </c:forEach>
                         </c:forEach>
                         <script>
                             function Delete(mess,url) {
