@@ -23,7 +23,7 @@ public class IndexSelect extends HttpServlet {
         ArrayList<LMONKEY_CATEGORY> father = LMONKEY_CATEGORYDao.selectCate("father");
         request.setAttribute("flist",father);
         ArrayList<LMONKEY_CATEGORY> child = LMONKEY_CATEGORYDao.selectCate("child");
-        request.setAttribute("clist",father);
+        request.setAttribute("clist",child);
 
         request.getRequestDispatcher("index.jsp").forward(request,response);
 
