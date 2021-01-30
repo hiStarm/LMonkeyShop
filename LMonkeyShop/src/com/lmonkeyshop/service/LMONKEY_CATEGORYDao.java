@@ -63,9 +63,9 @@ public class LMONKEY_CATEGORYDao {
         try {
             String sql=null;
             if (flag!=null&&flag.equals("father")){
-                sql="select * from lmonkey_category where CARE_PARENT_ID=0";
+                sql="SELECT * FROM lmonkey_category WHERE CATE_PARENT_ID=0";
             }else {
-                sql="select * from lmonkey_category where CARE_PARENT_ID!=0";
+                sql="SELECT * FROM lmonkey_category WHERE CATE_PARENT_ID!=0";
             }
             ps = conn.prepareStatement(sql);
             rs=ps.executeQuery();

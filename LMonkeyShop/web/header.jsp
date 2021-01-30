@@ -40,15 +40,19 @@
         </div>
         <ul class="clearfix" id="bott">
             <li><a href="indexselect">首页</a></li>
-
-            <li><a href="flowerDer.html">装饰摆件</a>
-                <div class="sList2">
-                    <div class="clearfix">
-                        <a href="proList.html">干花花艺</a>
-                        <a href="vase_proList.html">花瓶花器</a></div>
-                </div>
-            </li>
-
+            <c:forEach var="f" items="${flist}">
+                <li><a href="selectproductlist?fid=${f.CATE_ID}">${f.CATE_NAME}</a>
+                    <div class="sList2">
+                        <div class="clearfix">
+                            <c:forEach var="c" items="${clist}">
+                                <c:if test="${f.CATE_ID==c.CATE_PARENT_ID}">
+                                    <a href="selectproductlist?cid=${c.CATE_ID}">${c.CATE_NAME}</a>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </li>
+            </c:forEach>
         </ul>
     </div>
 </div>
